@@ -16,7 +16,6 @@ public class LogPage {
 
     public LogPage(WebDriver driver) {
         this.driver = driver;
-        //this.wait = wait;
     }
 
     public void open() {
