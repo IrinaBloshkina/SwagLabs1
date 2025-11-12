@@ -6,15 +6,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class LogPage {
+public class LoginPage {
     WebDriver driver;
 
     private By userName = By.xpath("//*[@id=\"user-name\"]");
-    private By passw = By.xpath("//*[@id=\"password\"]");
-    private By logBtn = By.xpath("//*[@id=\"login-button\"]");
+    private By password = By.xpath("//*[@id=\"password\"]");
+    private By loginBtn = By.xpath("//*[@id=\"login-button\"]");
     private By errMsg = By.xpath("//*[@id=\"login_button_container\"]/div/form/div[3]/h3");
 
-    public LogPage(WebDriver driver) {
+    public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -24,8 +24,8 @@ public class LogPage {
 
     public void login(String logName, String password) {
         driver.findElement(userName).sendKeys(logName);
-        driver.findElement(passw).sendKeys(password);
-        driver.findElement(logBtn).click();
+        driver.findElement(this.password).sendKeys(password);
+        driver.findElement(loginBtn).click();
 
     }
 

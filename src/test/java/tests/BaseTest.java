@@ -4,13 +4,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import pages.LogPage;
+import pages.LoginPage;
 
 import java.time.Duration;
 
 public class BaseTest {
     public WebDriver driver;
-    LogPage logPage;
+    LoginPage loginPage;
 
     @BeforeMethod
     public void setUp() {
@@ -18,7 +18,7 @@ public class BaseTest {
         options.addArguments("start=maximized");
         driver= new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
-        logPage = new LogPage(driver);
+        loginPage = new LoginPage(driver);
     }
     @AfterMethod
     public void close() {
