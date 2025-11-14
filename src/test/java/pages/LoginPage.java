@@ -2,34 +2,29 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
-public class LoginPage {
-    WebDriver driver;
+public class LoginPage extends BasePage {
 
     private By userName = By.xpath("//*[@id='user-name']");
-    private By password = By.xpath("//*[@id='password']");
+    private By passw = By.xpath("//*[@id='password']");
     private By loginBtn = By.xpath("//*[@id='login-button']");
     private By errMsg = By.xpath("//*[@id='login_button_container']/div/form/div[3]/h3");
 
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public void open() {
-        driver.get("https://www.saucedemo.com/");
+        driver.get(BASE_URL);
     }
 
-    public void login(String logName, String password) {
-        driver.findElement(userName).sendKeys(logName);
-        driver.findElement(this.password).sendKeys(password);
+    public void login(String loginName, String password) {
+        driver.findElement(userName).sendKeys(loginName);
+        driver.findElement(passw).sendKeys(password);
         driver.findElement(loginBtn).click();
     }
 
     public String checkErrorMsg() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(errMsg));
         return driver.findElement(errMsg).getText();
     }
