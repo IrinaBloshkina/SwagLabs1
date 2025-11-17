@@ -1,4 +1,5 @@
 package tests;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
@@ -12,38 +13,21 @@ public class LoginTest extends BaseTest {
         assertEquals(prodPage.getProdBtnText(), "Products");
     }
 
-    @Test (description = "Авториз с невалидным паролем")
-    public void invalidSignIn() {
-        loginPage.open();
-        loginPage.login("performance_glitch_user", "secret_salt");
-        assertEquals(loginPage.checkErrorMsg(), "Epic sadface: Username and password do not match any user in this service");
+    @DataProvider()
+    public Object[][] invalidData(){
+        return new Object[][]{
+                {"performance_glitch_user", "secret_salt", "Epic sadface: Username and password do not match any user in this service"},
+                {"standard_user", "", "Epic sadface: Password is required"},
+                {"", "secret_sauce", "Epic sadface: Username is required"},
+                {"", "", "Epic sadface: Username is required"},
+                {"locked_out_user", "secret_sauce", "Epic sadface: Sorry, this user has been locked out."}
+        };
     }
 
-    @Test (description = "Авториз с пустым полем password")
-    public void emptyPassword() {
+    @Test (dataProvider = "invalidData")
+    public void invalidSignIn(String loginName, String password, String errMsg) {
         loginPage.open();
-        loginPage.login("standard_user", "");
-        assertEquals(loginPage.checkErrorMsg(), "Epic sadface: Password is required");
-    }
-
-    @Test (description = "Авториз с пустым полем user")
-    public void emptyUsername() {
-        loginPage.open();
-        loginPage.login("", "secret_sauce");
-        assertEquals(loginPage.checkErrorMsg(), "Epic sadface: Username is required");
-    }
-
-    @Test (description = "Авториз с пустыми полями")
-    public void emptyAll() {
-        loginPage.open();
-        loginPage.login("", "");
-        assertEquals(loginPage.checkErrorMsg(), "Epic sadface: Username is required");
-    }
-
-    @Test (description = "Авториз заблокир пользователя")
-    public void lockedUser() {
-        loginPage.open();
-        loginPage.login("locked_out_user", "secret_sauce");
-        assertEquals(loginPage.checkErrorMsg(), "Epic sadface: Sorry, this user has been locked out.");
+        loginPage.login(loginName,password);
+        assertEquals(loginPage.checkErrorMsg(), errMsg);
     }
 }
