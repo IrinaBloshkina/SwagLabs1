@@ -26,6 +26,5 @@ public class ProdPage extends BasePage {
 
     public String counter() {
         return driver.findElement(counter).getText();
-
     }
 }
