@@ -20,10 +20,10 @@ public class LoginTest extends BaseTest {
    @DataProvider()
     public Object[][] invalidData(){
         return new Object[][]{
-               /* {"performance_glitch_user", "secret_salt", "Epic sadface: Username and password do not match any user in this service"},
-                {"standard_user", "", "Epic sadface: Password is required"},
-                {"", "secret_sauce", "Epic sadface: Username is required"},
-                {"", "", "Epic sadface: Username is required"},*/
+                {UserFactory.withPerfGlitchUserPermission(), "Epic sadface: Username and password do not match any user in this service"},
+                /* {"standard_user", "", "Epic sadface: Password is required"},
+               {"", "secret_sauce", "Epic sadface: Username is required"},
+               {"", "", "Epic sadface: Username is required"},*/
                 {UserFactory.withLockedUserPermission(), "Epic sadface: Sorry, this user has been locked out."}};
     }
 

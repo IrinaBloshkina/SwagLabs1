@@ -3,6 +3,8 @@ package user;
 import utils.PropertyReader;
 
 public class UserFactory {
+    public static Object withPerfGlitchUserPermission;
+
     public static User withAdminPermission() {
         return new User(PropertyReader.getProperty("swaglab.user"),
                 PropertyReader.getProperty("swaglab.password"));
@@ -15,6 +17,6 @@ public class UserFactory {
 
     public static User withPerfGlitchUserPermission() {
         return new User(PropertyReader.getProperty("swaglab.perf_user"),
-                PropertyReader.getProperty("swaglab.password"));
+                PropertyReader.getProperty("swaglab.password1"));
     }
 }

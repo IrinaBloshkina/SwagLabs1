@@ -31,7 +31,6 @@ public class ProdTest extends BaseTest {
         loginPage.login(UserFactory.withAdminPermission());
         prodPage.addToKart(product2);
         prodPage.addToKart(product1);
-        prodPage.addToKart(product1);
         assertEquals(prodPage.counter(),"2");
         assertTrue(cartPage.getProdNames().contains(product1));
     }
