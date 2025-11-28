@@ -3,7 +3,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import user.User;
 import user.UserFactory;
-
 import static org.testng.Assert.*;
 
 public class LoginTest extends BaseTest {

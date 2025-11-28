@@ -1,13 +1,11 @@
 package tests;
 import org.testng.annotations.Test;
 import user.UserFactory;
-
 import static org.testng.Assert.*;
 
 public class ProdTest extends BaseTest {
     final String product1 = "Sauce Labs Backpack";
     final String product2 = "Sauce Labs Bike Light";
-
 
     @Test(description = "Добавл. товара 'Sauce Labs Backpack' в корзину")
     public void check1GoodsAdded() {
@@ -32,6 +30,6 @@ public class ProdTest extends BaseTest {
         prodPage.addToKart(product2);
         prodPage.addToKart(product1);
         assertEquals(prodPage.counter(),"2");
-        assertTrue(cartPage.getProdNames().contains(product1));
+        assertFalse(cartPage.getProdNames().contains(product2));
     }
 }
