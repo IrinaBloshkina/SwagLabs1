@@ -1,20 +1,30 @@
 package tests;
+import io.qameta.allure.*;
+import net.bytebuddy.build.Plugin;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import user.User;
 import user.UserFactory;
+
 import static org.testng.Assert.*;
 
 public class LoginTest extends BaseTest {
 
+    @Epic("Модуль логина интернет магазина")
+    @Feature("Авторизация")
+    @Story("Валидная авторизация")
+    @Severity(SeverityLevel.BLOCKER)
+    @Owner("Irina Bloshkina @kakoy to vnutrenniy chat ")
+    @TmsLink("SwagLabs1/tree/Branch-3")
+    @Issue ("skypro_final_task")
     @Test (/*invocationCount = 4*/)
     public void signIn() {
         System.out.println("SignIn Tests are running in thread: "+Thread.currentThread().getId());
         loginPage.open();
         loginPage.login(UserFactory.withAdminPermission());
         assertTrue(prodPage.getProdBtn());
-        assertEquals(prodPage.getProdBtnText(), "Products");
-    }
+                assertEquals(prodPage.getProdBtnText(), "Products");
+            }
 
    @DataProvider()
     public Object[][] invalidData(){
@@ -26,6 +36,13 @@ public class LoginTest extends BaseTest {
                 {UserFactory.withLockedUserPermission(), "Epic sadface: Sorry, this user has been locked out."}};
     }
 
+    @Epic("Модуль логина интернет магазина")
+    @Feature("Авторизация")
+    @Story("Невалидная авторизация")
+    @Severity(SeverityLevel.BLOCKER)
+    @Owner("Irina Bloshkina @kakoy to vnutrenniy chat ")
+    @TmsLink("SwagLabs1/tree/Branch-3")
+    @Issue ("skypro_final_task")
     @Test (dataProvider = "invalidData")
     public void invalidData(User user, String errMsg) {
         System.out.println("InvalidSignIn Tests are running in thread: "+Thread.currentThread().getId());

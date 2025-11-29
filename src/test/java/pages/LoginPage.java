@@ -1,4 +1,5 @@
 package pages;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -14,10 +15,12 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
+    @Step("Загружаем страницу")
     public void open() {
         driver.get(BASE_URL);
     }
 
+    @Step("Логинимся под кредами: логин = {user.email}, пароль = *******")
     public void login(User user )  {
         fillInLogin(user.getEmail());
         fillPassword(user.getPassword());
@@ -32,10 +35,12 @@ public class LoginPage extends BasePage {
         driver.findElement(passw).sendKeys(password);
     }
 
+    @Step("Кликаем 'Login'")
     private void pressLoginBtn() {
         driver.findElement(loginBtn).click();
     }
 
+    @Step("Проверяем содержание сообщения об ошибке")
     public String checkErrorMsg() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(errMsg));
         return driver.findElement(errMsg).getText();

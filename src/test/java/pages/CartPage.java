@@ -1,4 +1,5 @@
 package pages;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,15 +13,17 @@ public class CartPage extends BasePage {
     public CartPage(WebDriver driver) {
         super(driver);
     }
+
+    @Step("Получаем список товаров на странице")
     public ArrayList<String> getProdNames() {
         ArrayList<String> names = new ArrayList<>();
         for (WebElement product : allProducts) {
             names.add(product.getText());
         }
-
         return names;
     }
 
+    @Step("Ожидаем прогрузки элемента Products")
     public void waitPageLoaded() {
         driver.findElement(prodBtn).isDisplayed();
     }
