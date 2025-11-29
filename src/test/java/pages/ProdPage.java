@@ -11,11 +11,9 @@ public class ProdPage extends BasePage {
         super(driver);
     }
     public boolean getProdBtn() {
-
         return driver.findElement(prodBtn).isDisplayed();
     }
     public String getProdBtnText() {
-
         return driver.findElement(prodBtn).getText();
     }
 
@@ -25,7 +23,6 @@ public class ProdPage extends BasePage {
     }
 
     public String counter() {
-
         return driver.findElement(counter).getText();
     }
 }

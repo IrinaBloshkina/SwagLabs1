@@ -8,7 +8,7 @@ public class LoginPage extends BasePage {
     private final By userName = By.xpath("//*[@id='user-name']");
     private final By passw = By.xpath("//*[@id='password']");
     private final By loginBtn = By.xpath("//*[@id='login-button']");
-    private final By errMsg = By.xpath("//*[contains (text(),'Epic sadface: Username and password do not match any user in this service')]");
+    private final By errMsg = By.xpath("//*[@data-test ='error']");
 
     public LoginPage(WebDriver driver) {
         super(driver);
