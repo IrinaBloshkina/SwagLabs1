@@ -1,6 +1,5 @@
 package tests;
 import io.qameta.allure.*;
-import net.bytebuddy.build.Plugin;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import user.User;
