@@ -4,7 +4,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import user.User;
 import user.UserFactory;
-
+import static enums.DepartmentNaming.PRODUCTS;
 import static org.testng.Assert.*;
 
 public class LoginTest extends BaseTest {
@@ -22,7 +22,7 @@ public class LoginTest extends BaseTest {
         loginPage.open();
         loginPage.login(UserFactory.withAdminPermission());
         assertTrue(prodPage.getProdBtn());
-                assertEquals(prodPage.getProdBtnText(), "Products");
+        assertEquals(prodPage.getProdBtnText(), PRODUCTS.getDisplayName());
             }
 
    @DataProvider()
