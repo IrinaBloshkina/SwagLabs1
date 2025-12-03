@@ -23,16 +23,17 @@ public class LoginTest extends BaseTest {
         loginPage.login(UserFactory.withAdminPermission());
         assertTrue(prodPage.getProdBtn());
         assertEquals(prodPage.getProdBtnText(), PRODUCTS.getDisplayName());
-            }
+    }
 
    @DataProvider()
     public Object[][] invalidData(){
         return new Object[][]{
-                {UserFactory.withPerfGlitchUserPermission(), "Epic sadface: Username and password do not match any user in this service"},
-                /* {"standard_user", "", "Epic sadface: Password is required"},
-               {"", "secret_sauce", "Epic sadface: Username is required"},
-               {"", "", "Epic sadface: Username is required"},*/
-                {UserFactory.withLockedUserPermission(), "Epic sadface: Sorry, this user has been locked out."}};
+             {UserFactory.withPerfGlitchUserPermission(), "Epic sadface: Username and password do not match any user in this service"},
+             /* {"standard_user", "", "Epic sadface: Password is required"},
+             {"", "secret_sauce", "Epic sadface: Username is required"},
+             {"", "", "Epic sadface: Username is required"},*/
+             {UserFactory.withLockedUserPermission(), "Epic sadface: Sorry, this user has been locked out."}
+        };
     }
 
     @Epic("Модуль логина интернет магазина")

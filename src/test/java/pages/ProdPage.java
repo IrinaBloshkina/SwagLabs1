@@ -11,6 +11,7 @@ public class ProdPage extends BasePage {
         public ProdPage(WebDriver driver) {
         super(driver);
     }
+
     @Step("Ожидаем прогрузки страницы с товарами")
     public boolean getProdBtn() {
         return driver.findElement(prodBtn).isDisplayed();
